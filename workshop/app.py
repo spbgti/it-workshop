@@ -5,10 +5,10 @@ from workshop.database import db
 def create_app(mode: str) -> Flask:
     app = Flask(__name__)
 
-    if mode is 'dev':
+    if mode == 'dev':
         from workshop.config import DevConfig
         app.config.from_object(DevConfig)
-    elif mode is 'test':
+    elif mode == 'test':
         from workshop.config import TestConfig
         app.config.from_object(TestConfig)
     else:

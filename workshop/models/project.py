@@ -1,9 +1,8 @@
 from workshop.database import db
 from workshop.models.user import User
 
-class Project (db.Model):
 
-    __tablename__ = 'projects'
+class Project(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150))
@@ -13,8 +12,9 @@ class Project (db.Model):
     author = db.relationship(User, primaryjoin=author_id == User.id)
 
     def __init__(self, name: str, description: str, author_id: int):
-        self.name, self.description, self.author_id = \
-            name, description, author_id
+        self.name = name
+        self.description = description
+        self.author_id = author_id
 
     def __repr__(self):
         return f"<Project {self.id} '{self.name}', author id {self.author_id}"
