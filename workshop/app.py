@@ -15,8 +15,7 @@ def create_app(mode: str) -> Flask:
         from workshop.config import BaseConfig
         app.config.from_object(BaseConfig)
 
-    print('Applied config:')
-    print(app.config)
+    app.logger.debug(f"Applied config: {app.config}")
 
     db.init_app(app)
     with app.app_context():
