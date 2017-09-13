@@ -3,6 +3,15 @@ from workshop.database import db
 
 
 def create_app(mode: str) -> Flask:
+    """
+    Flask application factory function
+    
+    Args:
+        mode: application execution mode, defines config used. Choices available: ['dev', 'test'].
+
+    Returns:
+        `Flask` object.
+    """
     app = Flask(__name__)
 
     if mode == 'dev':
