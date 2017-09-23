@@ -1,5 +1,8 @@
 from flask import Flask
+from flask_restful import Api
+
 from workshop.database import db
+from workshop.resources import ProjectsListApi, UsersListApi
 
 
 def create_app(mode: str) -> Flask:
@@ -13,6 +16,7 @@ def create_app(mode: str) -> Flask:
         `Flask` object.
     """
     app = Flask(__name__)
+    api = Api(app)
 
     if mode == 'dev':
         from workshop.config import DevConfig
@@ -29,5 +33,8 @@ def create_app(mode: str) -> Flask:
     db.init_app(app)
     with app.app_context():
         db.create_all()
+        
+    api.add_resource(ProjectsListApi, '/projects')
+    api.add_resource(UsersListApi, '/users')
 
     return app
