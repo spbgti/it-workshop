@@ -1,8 +1,8 @@
 from flask import Flask
-from flask_restful import Api
+from flask_restful import Api as API
 
 from workshop.database import db
-from workshop.resources import ProjectsListApi, UsersListApi
+from workshop.resources import ProjectsListAPI, UsersListAPI
 
 
 def create_app(mode: str) -> Flask:
@@ -16,7 +16,6 @@ def create_app(mode: str) -> Flask:
         `Flask` object.
     """
     app = Flask(__name__)
-    api = Api(app)
 
     if mode == 'dev':
         from workshop.config import DevConfig
@@ -30,11 +29,33 @@ def create_app(mode: str) -> Flask:
 
     app.logger.debug(f"Applied config: {app.config}")
 
+    api = register_api(app)
+    register_resources(api)
+
+    return app
+
+
+def register_api(app: Flask) -> API:
+    """
+    Register Flask extensions
+    Args:
+        app: The application object to extend
+
+    Returns:
+        `API` object
+    """
     db.init_app(app)
     with app.app_context():
         db.create_all()
-        
-    api.add_resource(ProjectsListApi, '/projects')
-    api.add_resource(UsersListApi, '/users')
+    api = API(app)
+    return api
 
-    return app
+
+def register_resources(app: API):
+    """
+    Register API resources
+    Args:
+        app: The application object to use
+    """
+    app.add_resource(ProjectsListAPI, '/projects')
+    app.add_resource(UsersListAPI, '/users')

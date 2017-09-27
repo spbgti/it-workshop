@@ -1,2 +1,2 @@
-from workshop.resources.projects import ProjectsListApi
-from workshop.resources.users import UsersListApi
+from workshop.resources.projects import ProjectsListAPI
+from workshop.resources.users import UsersListAPI
