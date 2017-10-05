@@ -14,6 +14,7 @@ class Project(db.Model):
         author_id:      Numeric ID of author's `User` object
         author:         Direct join of author's `User` object as per `author_id`
     """
+    __tablename__ = 'projects'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150))
     description = db.Column(db.String(500))
@@ -21,12 +22,16 @@ class Project(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     author = db.relationship(User, primaryjoin=author_id == User.id)
 
-    def __init__(self, name: str, description: str, author_id: int):
-        """Initializes Project class with data"""
-        self.name = name
-        self.description = description
-        self.author_id = author_id
-
     def __repr__(self):
-        """Prints correct Python representation of the Project class"""
+        """Returns correct Python representation of the Project class"""
         return f"<Project {self.id} '{self.name}', author id {self.author_id}"
+    
+    @property
+    def serialized(self):
+        """Returns object data in serializable format"""
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'author_id': self.author_id
+        }
