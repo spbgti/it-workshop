@@ -3,8 +3,8 @@
 """ Stockbrokers API server
 
 Usage:
-    stockbrokers run (dev|prod|test) [-v] [--bind=<ip>] [--port=<port>]
-    stockbrokers (-h|--help)
+    stockbrokers.py run (dev|prod|test) [-v] [--bind=<ip>] [--port=<port>]
+    stockbrokers.py (-h|--help)
 
 Options:
     -h --help           Display this help message.
@@ -20,8 +20,6 @@ from workshop.app import create_app
 
 if __name__ == '__main__':
     arguments = docopt(__doc__, version='0.4a')
-    
-    print(arguments)
     
     debug = arguments['--verbose']
     host = arguments['--bind'] or '0.0.0.0'

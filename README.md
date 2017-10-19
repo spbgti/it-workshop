@@ -14,14 +14,10 @@ Install required project dependencies:
 
 `pip install -r requirements.txt`
 
-Make the launcher executable:
-
-`chmod u+x ./stockbrokers`
-
 ### Launching the server
 
-`./stockbrokers run (dev|prod) [--bind=<ip>] [--port=<port>]`
+`python stockbrokers.py run (dev|prod) [--bind=<ip>] [--port=<port>]`
 
 ### Launching test suite
 
-`./stockbrokers run test`
+`python stockbrokers.py run test`
