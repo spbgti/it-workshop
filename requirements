@@ -1,9 +1,0 @@
-docopt
-Faker
-Flask
-Flask-Alembic
-Flask-Migrate
-Flask-RESTful
-Flask-SQLAlchemy
-pytest
-SQLAlchemy
