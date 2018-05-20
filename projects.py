@@ -2,18 +2,30 @@ projects = {
     'schema': {
         'title': {
             'type': 'string',
+            'required': True,
+            'empty': False,
         },
         'short_description': {
             'type': 'string',
+            'required': True,
+            'empty': False,
         },
         'link': {
             'type': 'string',
+            'required': True,
+        },
+        'progress': {
+            'type': 'integer',
+            'required': True,
+            'empty': False,
         },
         'source': {
             'type': 'string',
+            'required': True,
         },
-        'description': {
+        'full_description': {
             'type': 'string',
+            'required': True,
         },
         'team': {
             'type': 'objectid',
@@ -32,8 +44,12 @@ projects = {
                     'embeddable': True
                 },
             },
+            'required': True,
         },
-        #'companies': {}
+        'company': {
+            'type': 'string',
+            'required': True
+        }
     },
     'datasource': {
         'default_sort': [('_created', -1)]

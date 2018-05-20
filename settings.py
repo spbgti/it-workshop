@@ -9,6 +9,8 @@ DOMAIN = {
     'companies': {}
 }
 
+PUBLIC_METHODS = ['GET']
+PUBLIC_ITEM_METHODS = ['GET']
 RESOURCE_METHODS = ['GET', 'POST', 'DELETE']
 ITEM_METHODS = ['GET', 'PATCH', 'PUT', 'DELETE']
 RENDERERS = ['eve.render.JSONRenderer']
