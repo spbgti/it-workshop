@@ -24,8 +24,4 @@ IF_MATCH = False
 EMBEDDING = True
 
 MONGO_QUERY_BLACKLIST = ['$where']
-MONGO_HOST = os.environ.get('MONGO_HOST', 'localhost')
-MONGO_PORT = os.environ.get('MONGO_PORT', 27017)
-MONGO_USERNAME = os.environ.get('MONGO_USERNAME', None)
-MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', None)
-MONGO_DBNAME = os.environ.get('MONGO_DBNAME', 'eve')
+MONGO_URI = os.environ.get('MONGO_URI','mongodb://localhost:27017/eve')
